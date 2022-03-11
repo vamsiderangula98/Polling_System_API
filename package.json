@@ -1,0 +1,14 @@
+{
+  "name": "polling_api",
+  "version": "1.0.0",
+  "description": "polling api ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vamsi Krishna",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
