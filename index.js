@@ -1,17 +1,19 @@
-const express=require('express');
-const port=8000;
-const app=express();
+const express = require('express');
+const port = 8000;
+const cors = require('cors');
+const app = express();
+const db = require('./config/mongoose');
 
-
-app.get('/',function(req,res){
-    console.log(req);
-res.send('<h1>t is running succesfully</h1>');
+app.use(express.urlencoded({ extended: true }));
+//use cors
+app.use(cors());
+app.use('/', require('./routes/index'));
+//start server
+app.listen(port, (err) => {
+  if (err) {
+    console.log('Error Occured while connecting to Server');
+    return;
+  }
+  console.log(`Successfully connected to server at Port ${port}`);
 });
 
-
-app.listen(port,function(err){
-    if(err){
-        console.log("Error in running Express Server",err);
-    }
-    console.log("My Express Server is running on port:",port);
-});
