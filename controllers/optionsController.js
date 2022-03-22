@@ -10,6 +10,7 @@ module.exports.deleteoption = async (req, res) => {
         message: 'Error : Option not found',
       });
     }
+    //check if option has votes
     if (option.vote > 0) {
       return res.status(405).json({
         message: 'Option cannot be deleted since it has some votes',
@@ -24,7 +25,7 @@ module.exports.deleteoption = async (req, res) => {
       $pull: { options: req.params.id },
     });
     return res.status(200).json({
-      message: 'Option removed from question',
+      message: 'Option removed from Question',
     });
   } catch (error) {
     return res.status(422).json({

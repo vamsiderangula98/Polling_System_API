@@ -10,11 +10,13 @@ const mongoose = require('mongoose');
 //     console.error(`Error connecting to the database. \n${err}`);
 //   });
 
- mongoose.connect('mongodb://localhost/polling_api_db');
-
+mongoose.connect('mongodb://localhost/Polling_System_API_db');
+//checking if connection is established
 const db = mongoose.connection;
+//if not connected to db
 db.on('error', console.error.bind(console, 'ERROR CONNECTING TO DATABASE...'));
+//if connected to db
 db.once('open', () => {
-  console.log('Successfully connected to Polling Api database');
+  console.log('Successfully connected to Polling System Api database');
 });
 module.exports = db;

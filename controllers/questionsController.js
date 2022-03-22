@@ -6,9 +6,10 @@ module.exports.create = async (req, res) => {
     //if no content found to add
     if (req.body.content == '') {
       return res.status(422).json({
-        message: 'Empty question',
+        message: 'Empty Question Created',
       });
     }
+    //create question
     let question = await Question.create({
       content: req.body.content,
       options: [],
@@ -21,7 +22,7 @@ module.exports.create = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(422).json({
-      message: 'Error while creating question',
+      message: 'Error occured while creating question',
       error : error
     });
   }
@@ -33,9 +34,10 @@ module.exports.getQuestion = async (req, res) => {
     let question = await Question.findById(req.params.id);
     if (question == null) {
       return res.status(422).json({
-        message: 'Question doesnt exist',
+        message: 'Question Not Found',
       });
     }
+    //populating the question options
     question = await question.populate('options');
     return res.status(200).json({
       message: 'Here is your question',
